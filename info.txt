@@ -1,0 +1,55 @@
+
+
+When you create and activate a virtual environment, you are isolating your Python
+runtime and dependencies from the system Python and other projects.
+
+What python -m venv .venv does
+- it creates a folder (.venv/) that contains:
+- a copy of the Python interpreter
+- a private site-packages/directory
+- scripts to manage activation
+
+So you effectively get a self-contained Python installation inside your projects
+
+When you run activate
+- it temporarily modifies your shell environment variables, mainly:
+a) Path changes --> makes your termina use .venv/bin/python
+instead of /usr/bin/python (system Python)
+b) pip is redirected
+c) prompt changes
+
+Without a venv:
+	•	all projects share one global Python environment
+	•	package versions conflict easily
+	•	e.g., Project A needs numpy==1.20
+	•	Project B needs numpy==1.26
+
+With a venv:
+	•	each project has its own dependency universe
+	•	installs are isolated and reproducible
+	•	no version collisions
+
+    Think of it like:
+
+System Python = shared apartment building
+venv = private condo per project
+
+Each project gets:
+	•	its own “Python brain”
+	•	its own installed libraries
+	•	no interference from other projects
+
+
+# ACTIVATE venv
+source .venv/bin/activate
+
+# HOW TO DEACTIVATE
+deactivate
+
+Create virtual environment
+python -m venv .venv
+
+Activate 
+
+Install dependencies
+pip install numpy pandas flask
